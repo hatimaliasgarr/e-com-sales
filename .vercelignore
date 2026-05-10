@@ -1,9 +1,0 @@
-# Ignore backend and data files for Vercel deployment
-scripts/
-notebooks/
-data/
-sql/
-tableau/
-*.py
-*.ipynb
-*.log

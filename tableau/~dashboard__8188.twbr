@@ -4,6 +4,8 @@
 <workbook original-version='18.1' source-build='2026.1.1 (20261.26.0410.0924)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <MarkAnimation />
     <ObjectModelEncapsulateLegacy />
     <ObjectModelTableType />
@@ -18,19 +20,19 @@
   </preferences>
   <style>
     <style-rule element='animation'>
-      <format attr='animation-on' value='ao-off' />
+      <format attr='animation-on' value='ao-on' />
     </style-rule>
   </style>
   <datasources>
-    <datasource caption=' (2)' inline='true' name='ecommerce_data' version='18.1'>
+    <datasource caption='E-Commerce Dataset' inline='true' name='ecommerce_data' version='18.1'>
       <connection class='federated'>
         <named-connections>
-          <named-connection caption='E-Commerce Combined Dataset' name='ecommerce_dataleaf'>
+          <named-connection caption='Processed Data' name='processed_dataleaf'>
             <connection class='textscan' directory='C:/Users/hatim/Desktop/e-com-sales/data/processed' filename='tableau_ready_dataset.csv' password='' server='' />
           </named-connection>
         </named-connections>
-        <relation connection='ecommerce_dataleaf' name='tableau_ready_dataset#csv' table='[tableau_ready_dataset#csv]' type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+        <relation connection='processed_dataleaf' name='tableau_ready_dataset#csv' table='[tableau_ready_dataset#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='string' name='order_id' ordinal='0' />
             <column datatype='integer' name='order_item_id' ordinal='1' />
             <column datatype='string' name='customer_id' ordinal='2' />
@@ -53,6 +55,9 @@
             <column datatype='real' name='payment_value' ordinal='19' />
             <column datatype='integer' name='review_score' ordinal='20' />
             <column datatype='string' name='review_comment' ordinal='21' />
+            <column datatype='integer' name='delivery_days' ordinal='22' />
+            <column datatype='string' name='delivery_bucket' ordinal='23' />
+            <column datatype='string' name='rfm_segment' ordinal='24' />
           </columns>
         </relation>
         <metadata-records>
@@ -65,11 +70,10 @@
             <contains-null>true</contains-null>
             <attributes>
               <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
-              <attribute datatype='string' name='currency'>&quot;₹&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
               <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
               <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
               <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
             </attributes>
           </metadata-record>
@@ -85,7 +89,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -112,7 +116,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -127,7 +131,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -142,7 +146,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -157,7 +161,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -208,7 +212,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -223,7 +227,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -238,7 +242,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -253,7 +257,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -268,7 +272,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -283,7 +287,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -322,7 +326,7 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
           <metadata-record class='column'>
@@ -373,26 +377,61 @@
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RGB' />
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>delivery_days</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[delivery_days]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>delivery_days</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>delivery_bucket</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[delivery_bucket]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>delivery_bucket</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rfm_segment</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[rfm_segment]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>rfm_segment</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
             <object-id>[Migrated Data]</object-id>
           </metadata-record>
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='Order Month' datatype='datetime' name='[Calculation_OrderMonth]' role='dimension' type='ordinal'>
-        <calculation class='tableau' formula='DATETRUNC(&apos;month&apos;, [order_purchase_timestamp])' />
-      </column>
       <column caption='Migrated Data' datatype='table' name='[__tableau_internal_object_id__].[Migrated Data]' role='measure' type='quantitative' />
-      <column datatype='string' name='[customer_city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-      <column caption='Customer State' datatype='string' name='[customer_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
-      <column caption='Order ID' datatype='string' name='[order_id]' role='dimension' type='nominal' />
+      <column caption='State' datatype='string' name='[customer_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
       <column caption='Order Date' datatype='datetime' name='[order_purchase_timestamp]' role='dimension' type='ordinal' />
-      <column caption='Order Status' datatype='string' name='[order_status]' role='dimension' type='nominal' />
-      <column caption='Payment Type' datatype='string' name='[payment_type]' role='dimension' type='nominal' />
-      <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
-      <column caption='Product Category' datatype='string' name='[product_category_english]' role='dimension' type='nominal' />
-      <column datatype='string' name='[seller_city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
-      <column datatype='string' name='[seller_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Status' datatype='string' name='[order_status]' role='dimension' type='nominal' />
+      <column caption='Revenue' datatype='real' name='[price]' role='measure' type='quantitative' />
+      <column caption='Category' datatype='string' name='[product_category_english]' role='dimension' type='nominal' />
+      <column caption='Segment' datatype='string' name='[rfm_segment]' role='dimension' type='nominal' />
       <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
@@ -401,8 +440,8 @@
         <objects>
           <object caption='Migrated Data' id='Migrated Data'>
             <properties context=''>
-              <relation connection='ecommerce_dataleaf' name='tableau_ready_dataset#csv' table='[tableau_ready_dataset#csv]' type='table'>
-                <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+              <relation connection='processed_dataleaf' name='tableau_ready_dataset#csv' table='[tableau_ready_dataset#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
                   <column datatype='string' name='order_id' ordinal='0' />
                   <column datatype='integer' name='order_item_id' ordinal='1' />
                   <column datatype='string' name='customer_id' ordinal='2' />
@@ -425,6 +464,9 @@
                   <column datatype='real' name='payment_value' ordinal='19' />
                   <column datatype='integer' name='review_score' ordinal='20' />
                   <column datatype='string' name='review_comment' ordinal='21' />
+                  <column datatype='integer' name='delivery_days' ordinal='22' />
+                  <column datatype='string' name='delivery_bucket' ordinal='23' />
+                  <column datatype='string' name='rfm_segment' ordinal='24' />
                 </columns>
               </relation>
             </properties>
@@ -434,15 +476,97 @@
     </datasource>
   </datasources>
   <worksheets>
-    <worksheet name='Monthly Revenue Trend'>
+    <worksheet name='Category Rank'>
       <table>
         <view>
           <datasources>
-            <datasource caption=' (2)' name='ecommerce_data' />
+            <datasource caption='E-Commerce Dataset' name='ecommerce_data' />
+          </datasources>
+          <datasource-dependencies datasource='ecommerce_data'>
+            <column-instance column='[product_category_english]' derivation='None' name='[none:product_category_english:nk]' pivot='key' type='nominal' />
+            <column caption='Revenue' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column caption='Category' datatype='string' name='[product_category_english]' role='dimension' type='nominal' />
+            <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[ecommerce_data].[none:product_category_english:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[ecommerce_data].[sum:price:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#f28e2b' />
+                <format attr='size' value='1.1644198894500732' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[ecommerce_data].[sum:price:qk]</rows>
+        <cols>[ecommerce_data].[none:product_category_english:nk]</cols>
+      </table>
+      <simple-id uuid='{3582A9F4-5FF7-4EE4-B870-AB53E5F404E6}' />
+    </worksheet>
+    <worksheet name='RFM Segments'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='E-Commerce Dataset' name='ecommerce_data' />
+          </datasources>
+          <datasource-dependencies datasource='ecommerce_data'>
+            <column-instance column='[rfm_segment]' derivation='None' name='[none:rfm_segment:nk]' pivot='key' type='nominal' />
+            <column caption='Revenue' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column caption='Segment' datatype='string' name='[rfm_segment]' role='dimension' type='nominal' />
+            <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[ecommerce_data].[none:rfm_segment:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[ecommerce_data].[sum:price:qk]' shelf='rows' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='height' field='[ecommerce_data].[none:rfm_segment:nk]' value='33' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[ecommerce_data].[none:rfm_segment:nk]</rows>
+        <cols>[ecommerce_data].[sum:price:qk]</cols>
+      </table>
+      <simple-id uuid='{F1F825A3-0C3E-4150-B867-B57719BBD143}' />
+    </worksheet>
+    <worksheet name='Revenue Trend'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='E-Commerce Dataset' name='ecommerce_data' />
           </datasources>
           <datasource-dependencies datasource='ecommerce_data'>
             <column caption='Order Date' datatype='datetime' name='[order_purchase_timestamp]' role='dimension' type='ordinal' />
-            <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column caption='Revenue' datatype='real' name='[price]' role='measure' type='quantitative' />
             <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
             <column-instance column='[order_purchase_timestamp]' derivation='Month-Trunc' name='[tmn:order_purchase_timestamp:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -455,162 +579,184 @@
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#f28e2b' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
         <rows>[ecommerce_data].[sum:price:qk]</rows>
         <cols>[ecommerce_data].[tmn:order_purchase_timestamp:qk]</cols>
       </table>
-      <simple-id uuid='{096EE46A-7A2A-4DAC-9592-0E7875BE36A5}' />
+      <simple-id uuid='{AD1CC998-5C2D-41E4-802D-3A3052A48352}' />
     </worksheet>
-    <worksheet name='Revenue by State'>
+    <worksheet name='Sales Map'>
       <table>
         <view>
           <datasources>
-            <datasource caption=' (2)' name='ecommerce_data' />
+            <datasource caption='E-Commerce Dataset' name='ecommerce_data' />
           </datasources>
           <datasource-dependencies datasource='ecommerce_data'>
-            <column caption='Customer State' datatype='string' name='[customer_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column caption='State' datatype='string' name='[customer_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
             <column-instance column='[customer_state]' derivation='None' name='[none:customer_state:nk]' pivot='key' type='nominal' />
-            <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column caption='Revenue' datatype='real' name='[price]' role='measure' type='quantitative' />
             <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[ecommerce_data].[none:customer_state:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[ecommerce_data].[sum:price:qk]' shelf='columns' />
+          </shelf-sorts>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[ecommerce_data].[sum:price:qk]' field-type='quantitative' max='121698.32763135445' min='-15158.714624859902' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[ecommerce_data].[sum:price:qk]' palette='orange_10_0' type='interpolated' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-disallow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <color column='[ecommerce_data].[sum:price:qk]' />
+              <lod column='[ecommerce_data].[none:customer_state:nk]' />
+            </encodings>
           </pane>
         </panes>
-        <rows>[ecommerce_data].[none:customer_state:nk]</rows>
-        <cols>[ecommerce_data].[sum:price:qk]</cols>
+        <rows>[ecommerce_data].[sum:price:qk]</rows>
+        <cols>[ecommerce_data].[none:customer_state:nk]</cols>
       </table>
-      <simple-id uuid='{D85EE81E-4060-4500-9AE8-27321C2869A8}' />
-    </worksheet>
-    <worksheet name='Top Categories'>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption=' (2)' name='ecommerce_data' />
-          </datasources>
-          <datasource-dependencies datasource='ecommerce_data'>
-            <column-instance column='[product_category_english]' derivation='None' name='[none:product_category_english:nk]' pivot='key' type='nominal' />
-            <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
-            <column caption='Product Category' datatype='string' name='[product_category_english]' role='dimension' type='nominal' />
-            <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-disallow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-        </panes>
-        <rows>[ecommerce_data].[none:product_category_english:nk]</rows>
-        <cols>[ecommerce_data].[sum:price:qk]</cols>
-      </table>
-      <simple-id uuid='{BC200FE3-A12F-46AF-9193-4AEDF0432A85}' />
+      <simple-id uuid='{304C9E85-104C-42EB-B5E1-AC5C413200BE}' />
     </worksheet>
   </worksheets>
   <dashboards>
-    <dashboard name='Executive Analytics'>
+    <dashboard name='Interactive Overview'>
       <style />
-      <size maxheight='900' maxwidth='1600' minheight='900' minwidth='1600' />
+      <size maxheight='827' maxwidth='1169' minheight='827' minwidth='1169' preset-index='16' sizing-mode='fixed' />
       <zones>
         <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='50000' id='3' name='Monthly Revenue Trend' w='100000' x='0' y='0' />
-          <zone h='50000' id='4' name='Revenue by State' w='50000' x='0' y='50000' />
-          <zone h='50000' id='5' name='Top Categories' w='50000' x='50000' y='50000' />
+          <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='6' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='50000' id='2' name='Revenue Trend' w='50043' x='0' y='0' />
+              <zone h='50000' id='3' name='RFM Segments' w='49957' x='50043' y='0' />
+              <zone h='50000' id='4' name='Sales Map' w='50000' x='0' y='50000' />
+              <zone h='50000' id='5' name='Category Rank' w='50000' x='50000' y='50000' />
+            </zone>
+          </zone>
         </zone>
       </zones>
-      <simple-id uuid='{C01B881F-B415-4526-A262-C29DB5BE00ED}' />
+      <simple-id uuid='{544ED636-78D3-41D0-824F-4C779F134E89}' />
     </dashboard>
   </dashboards>
-  <windows saved-dpi-scale-factor='1.25' source-height='37'>
-    <window class='worksheet' name='Monthly Revenue Trend'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{2230A4EE-5677-441B-8D2E-FC2E9057E61F}' />
-    </window>
-    <window class='worksheet' name='Revenue by State'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{BC860BE6-B33D-47E8-9D29-98DB3ECEC7C9}' />
-    </window>
-    <window class='worksheet' name='Top Categories'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{22395FA9-B98C-427C-B3FF-3BEB4371A812}' />
-    </window>
-    <window class='dashboard' maximized='true' name='Executive Analytics'>
+  <windows source-height='37'>
+    <window class='dashboard' maximized='true' name='Interactive Overview'>
       <viewpoints>
-        <viewpoint name='Monthly Revenue Trend' />
-        <viewpoint name='Revenue by State' />
-        <viewpoint name='Top Categories' />
+        <viewpoint name='Category Rank'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='RFM Segments' />
+        <viewpoint name='Revenue Trend' />
+        <viewpoint name='Sales Map' />
       </viewpoints>
       <active id='-1' />
-      <simple-id uuid='{6763085B-CCC5-425F-92E8-F8A58B888EBA}' />
+      <simple-id uuid='{42A85D31-3F99-4275-9159-2C231F873E69}' />
+    </window>
+    <window class='worksheet' name='Sales Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{449CB3DF-1394-40F9-A8E6-1FB1438490A6}' />
+    </window>
+    <window class='worksheet' name='Category Rank'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7BDDD78F-2173-4D13-8F21-47A46DC9B32B}' />
+    </window>
+    <window class='worksheet' name='Revenue Trend'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0F623F10-D529-4CEC-9594-9AAABA70561C}' />
+    </window>
+    <window class='worksheet' name='RFM Segments'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{28EAE7E3-15F9-47BF-8088-FF4C6A203C34}' />
     </window>
   </windows>
 </workbook>

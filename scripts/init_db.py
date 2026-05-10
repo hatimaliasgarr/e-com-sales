@@ -5,7 +5,10 @@ from sqlalchemy import create_engine, text
 
 load_dotenv()
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+# DATABASE_URL = os.getenv('DATABASE_URL')
+
+
+DATABASE_URL="postgresql://postgres:lqEmz5mqFYRsS1wb@db.pxrjmdbdyiyrvhfuabfw.supabase.co:5432/postgres"
 if not DATABASE_URL:
     print("Error: DATABASE_URL not found in .env")
     sys.exit(1)

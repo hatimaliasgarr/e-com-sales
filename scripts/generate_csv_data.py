@@ -266,6 +266,28 @@ for oi in order_items:
         'review_score': rev['review_score'] if rev else '',
         'review_comment': rev['review_comment_message'] if rev else '',
     }
+    
+    # Calculate RFM and Delivery Metrics for Tableau
+    if row['order_delivered_customer_date'] and row['order_purchase_timestamp']:
+        p_dt = datetime.strptime(row['order_purchase_timestamp'], '%Y-%m-%d %H:%M:%S')
+        d_dt = datetime.strptime(row['order_delivered_customer_date'], '%Y-%m-%d %H:%M:%S')
+        days = (d_dt - p_dt).days
+        row['delivery_days'] = days
+        row['delivery_bucket'] = 'Fast (1-10)' if days <= 10 else ('Average (11-20)' if days <= 20 else 'Slow (21+)')
+    else:
+        row['delivery_days'] = ''
+        row['delivery_bucket'] = 'Unknown'
+
+    # Mock RFM Segment based on price and state (for variety)
+    if row['price'] > 400:
+        row['rfm_segment'] = 'Champions'
+    elif row['price'] > 150:
+        row['rfm_segment'] = 'Loyal'
+    elif row['customer_state'] in ('SP', 'RJ'):
+        row['rfm_segment'] = 'Potential Loyalist'
+    else:
+        row['rfm_segment'] = 'At Risk'
+        
     combined.append(row)
 
 write_csv(os.path.join(PROC,'tableau_ready_dataset.csv'), combined, list(combined[0].keys()))
