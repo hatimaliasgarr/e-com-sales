@@ -100,6 +100,23 @@ We plan to implement a dynamic loading layer that supports:
 - **Database**: PostgreSQL 15 (Supabase).
 - **Core Maintainer**: Antigravity AI.
 
+## 7. Project Structure
+```text
+/
+├── assets/          # Static images and icons
+├── css/             # Custom Design System (Glassmorphism, Tokens)
+├── data/            # Raw and processed datasets
+├── docs/            # Technical manifest and business reports
+├── js/              # Supabase Client and Chart logic
+├── logs/            # ETL execution logs
+├── notebooks/       # Data exploration and cleaning (Jupyter)
+├── scripts/         # Python ETL Pipeline and setup scripts
+├── sql/             # Database schema and analytical views
+├── tableau/         # Tableau BI workbooks
+├── index.html       # Entry point
+└── README.md        # Quick-start guide
+```
+
 ---
 
 *(This documentation is intentionally comprehensive to serve as a technical reference for future developers and stakeholders. It contains detailed histories of all major architecture decisions and troubleshooting steps.)*

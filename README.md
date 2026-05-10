@@ -1,7 +1,7 @@
 # 📊 E-Commerce Analytics Dashboard: Olist Modernization
 
 > [!IMPORTANT]
-> **View the full technical manifest and troubleshooting history in [PROJECT_DOCUMENTATION.md](./PROJECT_DOCUMENTATION.md).**
+> **View the full technical manifest and troubleshooting history in [docs/PROJECT_DOCUMENTATION.md](./docs/PROJECT_DOCUMENTATION.md).**
 
 > Enterprise-grade analytics solution for e-commerce data, featuring an interactive web dashboard, automated ETL pipeline, and comprehensive business intelligence — deployed on **Vercel**.
 
