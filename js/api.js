@@ -7,9 +7,9 @@ window.DASHBOARD_DATA = {};
  * Helper to fetch data from a Supabase view
  */
 async function fetchView(viewName) {
-  if (SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') return null; // Not configured
+  if (window.SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') return null; // Not configured
   
-  const { data, error } = await supabase.from(viewName).select('*');
+  const { data, error } = await window.supabaseClient.from(viewName).select('*');
   if (error) {
     console.error(`Error fetching view ${viewName}:`, error);
     return [];
@@ -218,7 +218,7 @@ async function initDashboardData() {
   const path = window.location.pathname;
   let success = false;
   
-  if (SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') {
+  if (window.SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') {
     // If not configured, inject fallback mock data immediately to prevent page crash
     console.warn("Injecting fallback mock data because Supabase is not configured.");
     injectFallbackData();
