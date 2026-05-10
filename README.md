@@ -24,30 +24,30 @@ E-commerce companies generate massive transaction data but often lack actionable
 
 ## 🏗️ Architecture
 
-```
+```text
 ┌──────────────────┐     ┌───────────────────┐     ┌──────────────────┐
-│   Raw CSV Data   │────▶│  Python ETL       │────▶│  PostgreSQL DB   │
-│   (Olist 100K+)  │     │  Pipeline         │     │  (Normalized)    │
+│   Raw CSV Data   │────▶│  Python ETL       │────▶│ Supabase (BaaS)  │
+│   (Olist 100K+)  │     │  Pipeline         │     │ PostgreSQL + API │
 └──────────────────┘     └───────────────────┘     └──────────────────┘
                                 │                           │
                                 ▼                           ▼
                     ┌───────────────────┐     ┌──────────────────┐
-                    │  Data Generator   │     │  SQL Business    │
-                    │  (200K+ orders)   │     │  Queries (20+)   │
+                    │  Data Generator   │     │  Supabase Views  │
+                    │  (200K+ orders)   │     │  (API Endpoints) │
                     └───────────────────┘     └──────────────────┘
-                                │
-                                ▼
-                    ┌───────────────────────────────────┐
-                    │     Interactive Web Dashboard      │
-                    │  ┌─────────┬─────────┬──────────┐ │
-                    │  │Executive│Customer │ Product  │ │
-                    │  │Overview │Insights │Performnce│ │
-                    │  ├─────────┼─────────┼──────────┤ │
-                    │  │Regional │Operation│          │ │
-                    │  │Analysis │Metrics  │          │ │
-                    │  └─────────┴─────────┴──────────┘ │
-                    │         Deployed on Vercel         │
-                    └───────────────────────────────────┘
+                                                            │
+                                                            ▼
+                                ┌───────────────────────────────────┐
+                                │     Interactive Web Dashboard      │
+                                │  ┌─────────┬─────────┬──────────┐ │
+                                │  │Executive│Customer │ Product  │ │
+                                │  │Overview │Insights │Performnce│ │
+                                │  ├─────────┼─────────┼──────────┤ │
+                                │  │Regional │Operation│          │ │
+                                │  │Analysis │Metrics  │          │ │
+                                │  └─────────┴─────────┴──────────┘ │
+                                │    Live Data Fetch via Supabase    │
+                                └───────────────────────────────────┘
 ```
 
 ---

@@ -3,14 +3,22 @@
    Core App Logic — Navigation, Animations
    ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   initChartDefaults();
   initSidebar();
-  initAnimations();
-  initCounters();
   initFilterBtns();
   setCurrentDate();
+  
+  // Await data load from Supabase API before initializing charts and animations
+  if (typeof initDashboardData === 'function') {
+    await initDashboardData();
+  }
+  
   if (typeof initPageCharts === 'function') initPageCharts();
+  
+  // Initialize animations and counters AFTER data is loaded and DOM is populated
+  initAnimations();
+  initCounters();
 });
 
 // ── Sidebar Navigation ──

@@ -12,6 +12,9 @@ import logging
 import os
 import sys
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ── Logging Configuration ──
 logging.basicConfig(
@@ -25,6 +28,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # ── Configuration ──
+DATABASE_URL = os.getenv('DATABASE_URL')
 DB_CONFIG = {
     'host': os.getenv('DB_HOST', 'localhost'),
     'port': os.getenv('DB_PORT', '5432'),
@@ -33,8 +37,9 @@ DB_CONFIG = {
     'password': os.getenv('DB_PASS', 'password')
 }
 
-RAW_DATA_PATH = '../data/raw/'
-PROCESSED_DATA_PATH = '../data/processed/'
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RAW_DATA_PATH = os.path.join(base_dir, 'data', 'raw')
+PROCESSED_DATA_PATH = os.path.join(base_dir, 'data', 'processed')
 
 
 class ETLPipeline:
@@ -48,7 +53,15 @@ class ETLPipeline:
     def connect_db(self):
         """Establish PostgreSQL connection."""
         try:
-            conn_str = f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
+            if DATABASE_URL:
+                conn_str = DATABASE_URL
+            else:
+                conn_str = f"postgresql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
+            
+            # Handle Supabase connection pooler URL (postgresql:// -> postgresql://)
+            if conn_str.startswith('postgres://'):
+                conn_str = conn_str.replace('postgres://', 'postgresql://', 1)
+                
             self.engine = create_engine(conn_str, echo=False)
             logger.info("Database connection established successfully")
         except Exception as e:
@@ -63,16 +76,16 @@ class ETLPipeline:
         
         try:
             df = pd.read_csv(filepath, **kwargs)
-            logger.info(f"  → Loaded {len(df):,} rows, {len(df.columns)} columns")
+            logger.info(f"  -> Loaded {len(df):,} rows, {len(df.columns)} columns")
             return df
         except FileNotFoundError:
-            logger.warning(f"  → File not found: {filepath}, trying processed path")
+            logger.warning(f"  -> File not found: {filepath}, trying processed path")
             filepath = os.path.join(PROCESSED_DATA_PATH, filename)
             df = pd.read_csv(filepath, **kwargs)
-            logger.info(f"  → Loaded {len(df):,} rows from processed path")
+            logger.info(f"  -> Loaded {len(df):,} rows from processed path")
             return df
         except Exception as e:
-            logger.error(f"  → Extraction failed: {e}")
+            logger.error(f"  -> Extraction failed: {e}")
             self.metrics['errors'] += 1
             return pd.DataFrame()
     
@@ -88,7 +101,7 @@ class ETLPipeline:
         df = df.dropna(subset=['customer_id'])
         
         removed = initial_count - len(df)
-        logger.info(f"  → Removed {removed:,} duplicates/invalid rows")
+        logger.info(f"  -> Removed {removed:,} duplicates/invalid rows")
         self.metrics['rows_processed'] += len(df)
         return df
     
@@ -106,7 +119,7 @@ class ETLPipeline:
         df['order_status'] = df['order_status'].str.lower().str.strip()
         
         self.metrics['rows_processed'] += len(df)
-        logger.info(f"  → Processed {len(df):,} orders")
+        logger.info(f"  -> Processed {len(df):,} orders")
         return df
     
     def clean_order_items(self, df):
@@ -119,7 +132,7 @@ class ETLPipeline:
         df = df.dropna(subset=['order_id', 'price'])
         
         self.metrics['rows_processed'] += len(df)
-        logger.info(f"  → Processed {len(df):,} order items")
+        logger.info(f"  -> Processed {len(df):,} order items")
         return df
     
     def clean_reviews(self, df):
@@ -133,26 +146,26 @@ class ETLPipeline:
             df['review_creation_date'] = pd.to_datetime(df['review_creation_date'], errors='coerce')
         
         self.metrics['rows_processed'] += len(df)
-        logger.info(f"  → Processed {len(df):,} reviews")
+        logger.info(f"  -> Processed {len(df):,} reviews")
         return df
     
     # ── LOAD ──
-    def load_to_db(self, df, table_name, if_exists='replace'):
+    def load_to_db(self, df, table_name, if_exists='append'):
         """Load DataFrame into PostgreSQL table."""
         if self.engine is None:
             logger.warning(f"No DB connection — saving {table_name} to CSV instead")
             output_path = os.path.join(PROCESSED_DATA_PATH, f'{table_name}.csv')
             df.to_csv(output_path, index=False)
-            logger.info(f"  → Saved to {output_path}")
+            logger.info(f"  -> Saved to {output_path}")
             self.metrics['tables_loaded'] += 1
             return
         
         try:
             df.to_sql(table_name, self.engine, if_exists=if_exists, index=False, method='multi', chunksize=5000)
-            logger.info(f"  → Loaded {len(df):,} rows into '{table_name}'")
+            logger.info(f"  -> Loaded {len(df):,} rows into '{table_name}'")
             self.metrics['tables_loaded'] += 1
         except Exception as e:
-            logger.error(f"  → Load failed for '{table_name}': {e}")
+            logger.error(f"  -> Load failed for '{table_name}': {e}")
             self.metrics['errors'] += 1
     
     # ── GENERATE SUMMARY METRICS ──
@@ -168,9 +181,9 @@ class ETLPipeline:
             'generated_at': datetime.now().isoformat()
         }
         
-        logger.info(f"  → Total Revenue: ${summary['total_revenue']:,.2f}")
-        logger.info(f"  → Avg Order Value: ${summary['avg_order_value']:,.2f}")
-        logger.info(f"  → Avg Review Score: {summary['avg_review_score']:.2f}")
+        logger.info(f"  -> Total Revenue: ${summary['total_revenue']:,.2f}")
+        logger.info(f"  -> Avg Order Value: ${summary['avg_order_value']:,.2f}")
+        logger.info(f"  -> Avg Review Score: {summary['avg_review_score']:.2f}")
         
         return summary
     
@@ -190,8 +203,12 @@ class ETLPipeline:
         
         # Extract
         customers = self.extract('customers.csv')
+        sellers = self.extract('sellers.csv')
+        products = self.extract('products.csv')
+        categories = self.extract('category_translation.csv')
         orders = self.extract('orders.csv')
         items = self.extract('order_items.csv')
+        payments = self.extract('payments.csv')
         reviews = self.extract('reviews.csv')
         
         # Transform
@@ -204,8 +221,17 @@ class ETLPipeline:
         if not reviews.empty:
             reviews = self.clean_reviews(reviews)
         
-        # Load
-        for df, name in [(customers,'customers'),(orders,'orders'),(items,'order_items'),(reviews,'reviews')]:
+        # Load in correct dependency order
+        for df, name in [
+            (customers, 'customers'),
+            (sellers, 'sellers'),
+            (products, 'products'),
+            (categories, 'category_translation'),
+            (orders, 'orders'),
+            (items, 'order_items'),
+            (payments, 'payments'),
+            (reviews, 'reviews')
+        ]:
             if not df.empty:
                 self.load_to_db(df, name)
         
