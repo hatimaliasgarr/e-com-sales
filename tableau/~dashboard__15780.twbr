@@ -1,0 +1,616 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20261.26.0410.0924                               -->
+<workbook original-version='18.1' source-build='2026.1.1 (20261.26.0410.0924)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style>
+    <style-rule element='animation'>
+      <format attr='animation-on' value='ao-off' />
+    </style-rule>
+  </style>
+  <datasources>
+    <datasource caption=' (2)' inline='true' name='ecommerce_data' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='E-Commerce Combined Dataset' name='ecommerce_dataleaf'>
+            <connection class='textscan' directory='C:/Users/hatim/Desktop/e-com-sales/data/processed' filename='tableau_ready_dataset.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='ecommerce_dataleaf' name='tableau_ready_dataset#csv' table='[tableau_ready_dataset#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+            <column datatype='string' name='order_id' ordinal='0' />
+            <column datatype='integer' name='order_item_id' ordinal='1' />
+            <column datatype='string' name='customer_id' ordinal='2' />
+            <column datatype='string' name='customer_city' ordinal='3' />
+            <column datatype='string' name='customer_state' ordinal='4' />
+            <column datatype='string' name='order_status' ordinal='5' />
+            <column datatype='datetime' name='order_purchase_timestamp' ordinal='6' />
+            <column datatype='datetime' name='order_delivered_customer_date' ordinal='7' />
+            <column datatype='datetime' name='order_estimated_delivery_date' ordinal='8' />
+            <column datatype='string' name='product_id' ordinal='9' />
+            <column datatype='string' name='product_category' ordinal='10' />
+            <column datatype='string' name='product_category_english' ordinal='11' />
+            <column datatype='string' name='seller_id' ordinal='12' />
+            <column datatype='string' name='seller_city' ordinal='13' />
+            <column datatype='string' name='seller_state' ordinal='14' />
+            <column datatype='real' name='price' ordinal='15' />
+            <column datatype='real' name='freight_value' ordinal='16' />
+            <column datatype='string' name='payment_type' ordinal='17' />
+            <column datatype='integer' name='payment_installments' ordinal='18' />
+            <column datatype='real' name='payment_value' ordinal='19' />
+            <column datatype='integer' name='review_score' ordinal='20' />
+            <column datatype='string' name='review_comment' ordinal='21' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;₹&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_item_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[order_item_id]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>order_item_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_id]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>customer_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_city</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_city]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>customer_city</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_state</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_state]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>customer_state</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_status</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_status]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>order_status</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_purchase_timestamp</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[order_purchase_timestamp]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>order_purchase_timestamp</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_delivered_customer_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[order_delivered_customer_date]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>order_delivered_customer_date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_estimated_delivery_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[order_estimated_delivery_date]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>order_estimated_delivery_date</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_id]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>product_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_category]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>product_category</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>product_category_english</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[product_category_english]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>product_category_english</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>seller_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[seller_id]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>seller_id</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>seller_city</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[seller_city]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>seller_city</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>seller_state</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[seller_state]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>seller_state</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>price</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[price]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>price</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>freight_value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[freight_value]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>freight_value</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>payment_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[payment_type]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>payment_type</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>payment_installments</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[payment_installments]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>payment_installments</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>payment_value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[payment_value]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>payment_value</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>review_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[review_score]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>review_score</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>review_comment</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[review_comment]</local-name>
+            <parent-name>[tableau_ready_dataset#csv]</parent-name>
+            <remote-alias>review_comment</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[Migrated Data]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Order Month' datatype='datetime' name='[Calculation_OrderMonth]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATETRUNC(&apos;month&apos;, [order_purchase_timestamp])' />
+      </column>
+      <column caption='Migrated Data' datatype='table' name='[__tableau_internal_object_id__].[Migrated Data]' role='measure' type='quantitative' />
+      <column datatype='string' name='[customer_city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='Customer State' datatype='string' name='[customer_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Order ID' datatype='string' name='[order_id]' role='dimension' type='nominal' />
+      <column caption='Order Date' datatype='datetime' name='[order_purchase_timestamp]' role='dimension' type='ordinal' />
+      <column caption='Order Status' datatype='string' name='[order_status]' role='dimension' type='nominal' />
+      <column caption='Payment Type' datatype='string' name='[payment_type]' role='dimension' type='nominal' />
+      <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
+      <column caption='Product Category' datatype='string' name='[product_category_english]' role='dimension' type='nominal' />
+      <column datatype='string' name='[seller_city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column datatype='string' name='[seller_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='Migrated Data' id='Migrated Data'>
+            <properties context=''>
+              <relation connection='ecommerce_dataleaf' name='tableau_ready_dataset#csv' table='[tableau_ready_dataset#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+                  <column datatype='string' name='order_id' ordinal='0' />
+                  <column datatype='integer' name='order_item_id' ordinal='1' />
+                  <column datatype='string' name='customer_id' ordinal='2' />
+                  <column datatype='string' name='customer_city' ordinal='3' />
+                  <column datatype='string' name='customer_state' ordinal='4' />
+                  <column datatype='string' name='order_status' ordinal='5' />
+                  <column datatype='datetime' name='order_purchase_timestamp' ordinal='6' />
+                  <column datatype='datetime' name='order_delivered_customer_date' ordinal='7' />
+                  <column datatype='datetime' name='order_estimated_delivery_date' ordinal='8' />
+                  <column datatype='string' name='product_id' ordinal='9' />
+                  <column datatype='string' name='product_category' ordinal='10' />
+                  <column datatype='string' name='product_category_english' ordinal='11' />
+                  <column datatype='string' name='seller_id' ordinal='12' />
+                  <column datatype='string' name='seller_city' ordinal='13' />
+                  <column datatype='string' name='seller_state' ordinal='14' />
+                  <column datatype='real' name='price' ordinal='15' />
+                  <column datatype='real' name='freight_value' ordinal='16' />
+                  <column datatype='string' name='payment_type' ordinal='17' />
+                  <column datatype='integer' name='payment_installments' ordinal='18' />
+                  <column datatype='real' name='payment_value' ordinal='19' />
+                  <column datatype='integer' name='review_score' ordinal='20' />
+                  <column datatype='string' name='review_comment' ordinal='21' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Monthly Revenue Trend'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption=' (2)' name='ecommerce_data' />
+          </datasources>
+          <datasource-dependencies datasource='ecommerce_data'>
+            <column caption='Order Date' datatype='datetime' name='[order_purchase_timestamp]' role='dimension' type='ordinal' />
+            <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_purchase_timestamp]' derivation='Month-Trunc' name='[tmn:order_purchase_timestamp:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[ecommerce_data].[sum:price:qk]</rows>
+        <cols>[ecommerce_data].[tmn:order_purchase_timestamp:qk]</cols>
+      </table>
+      <simple-id uuid='{096EE46A-7A2A-4DAC-9592-0E7875BE36A5}' />
+    </worksheet>
+    <worksheet name='Revenue by State'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption=' (2)' name='ecommerce_data' />
+          </datasources>
+          <datasource-dependencies datasource='ecommerce_data'>
+            <column caption='Customer State' datatype='string' name='[customer_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[customer_state]' derivation='None' name='[none:customer_state:nk]' pivot='key' type='nominal' />
+            <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[ecommerce_data].[none:customer_state:nk]</rows>
+        <cols>[ecommerce_data].[sum:price:qk]</cols>
+      </table>
+      <simple-id uuid='{D85EE81E-4060-4500-9AE8-27321C2869A8}' />
+    </worksheet>
+    <worksheet name='Top Categories'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption=' (2)' name='ecommerce_data' />
+          </datasources>
+          <datasource-dependencies datasource='ecommerce_data'>
+            <column-instance column='[product_category_english]' derivation='None' name='[none:product_category_english:nk]' pivot='key' type='nominal' />
+            <column caption='Price' datatype='real' name='[price]' role='measure' type='quantitative' />
+            <column caption='Product Category' datatype='string' name='[product_category_english]' role='dimension' type='nominal' />
+            <column-instance column='[price]' derivation='Sum' name='[sum:price:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-disallow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[ecommerce_data].[none:product_category_english:nk]</rows>
+        <cols>[ecommerce_data].[sum:price:qk]</cols>
+      </table>
+      <simple-id uuid='{BC200FE3-A12F-46AF-9193-4AEDF0432A85}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Executive Analytics'>
+      <style />
+      <size maxheight='900' maxwidth='1600' minheight='900' minwidth='1600' />
+      <zones>
+        <zone h='100000' id='1' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='50000' id='3' name='Monthly Revenue Trend' w='100000' x='0' y='0' />
+          <zone h='50000' id='4' name='Revenue by State' w='50000' x='0' y='50000' />
+          <zone h='50000' id='5' name='Top Categories' w='50000' x='50000' y='50000' />
+        </zone>
+      </zones>
+      <simple-id uuid='{C01B881F-B415-4526-A262-C29DB5BE00ED}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' name='Monthly Revenue Trend'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2230A4EE-5677-441B-8D2E-FC2E9057E61F}' />
+    </window>
+    <window class='worksheet' name='Revenue by State'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{BC860BE6-B33D-47E8-9D29-98DB3ECEC7C9}' />
+    </window>
+    <window class='worksheet' name='Top Categories'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{22395FA9-B98C-427C-B3FF-3BEB4371A812}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Executive Analytics'>
+      <viewpoints>
+        <viewpoint name='Monthly Revenue Trend' />
+        <viewpoint name='Revenue by State' />
+        <viewpoint name='Top Categories' />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{6763085B-CCC5-425F-92E8-F8A58B888EBA}' />
+    </window>
+  </windows>
+</workbook>
