@@ -1,6 +1,6 @@
 // Initialize Supabase Client
 // Replace these with your actual Supabase URL and Anon Key
-const SUPABASE_URL = 'https://pxrmmdbdyiyrvfhuabfw.supabase.co';
+const SUPABASE_URL = 'https://pxrjmdbdyiyrvhfuabfw.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4cmptZGJkeWl5cnZoZnVhYmZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzOTA0MTMsImV4cCI6MjA5Mzk2NjQxM30.SWN03qXV5gO7xVD9PyRC6yKITFg_w_HL3h3FJOOBpI8';
 
 // We initialize the client if the URL is provided. 
